@@ -76,6 +76,16 @@ export const animate = function () {
               door icon will appear. 
           */
 
+      // (A1) GO INTO FULL SCREEN FIRST
+      let de = document.documentElement;
+      if (de.requestFullscreen) { de.requestFullscreen(); }
+      else if (de.mozRequestFullScreen) { de.mozRequestFullScreen(); }
+      else if (de.webkitRequestFullscreen) { de.webkitRequestFullscreen(); }
+      else if (de.msRequestFullscreen) { de.msRequestFullscreen(); }
+
+      // (A2) THEN LOCK ORIENTATION
+      screen.orientation.lock("landscape");
+
       light.play();
       transition(darkroom);
       CTAtext.innerHTML = "Click the Door";
@@ -95,7 +105,7 @@ export const animate = function () {
       transition(room);
       setTimeout(function () {
         haunt.play();
-        haunt.loop = true;
+        //haunt.loop = true;
         button.classList.add("door-in");
         button.classList.remove("door-out");
         room.style.display = "none";
