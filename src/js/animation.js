@@ -76,9 +76,6 @@ export const animate = function () {
               door icon will appear. 
           */
 
-      // (A2) THEN LOCK ORIENTATION
-      screen.orientation.lock("landscape");
-
       light.play();
       transition(darkroom);
       CTAtext.innerHTML = "Click the Door";
